@@ -1,0 +1,31 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container" style="margin: 100px">
+        
+        <form method="POST">
+        	<div class="form-group">
+        		<label class="jumbotron" style="display: block; height:20px"><h3>Enter Your Posts</h3></label>
+        		{{form.text}}
+        	</div>
+        	<div class="form-group">
+           		<button class="btn btn-lg btn-success" style="margin: 20px">Submit</button>
+        			
+        	</div>
+           {% csrf_token %}
+        </form>
+
+      
+        {% if value == 'Spam' %}
+    	<div class="alert alert-danger" role="alert">
+ 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  			Spam!!!
+		</div>
+		
+		{% elif value == 'Not Spam' %}
+
+		<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="padding: 10px"></span> Not spam</div>
+
+		{% endif%}
+    </div>
+{% endblock %}
